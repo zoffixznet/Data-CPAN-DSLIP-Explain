@@ -1,0 +1,116 @@
+NAME
+    Data::CPAN::DSLIP::Explain - "decrypts" CPAN module DSLIP code
+
+SYNOPSIS
+        use strict;
+        use warnings;
+
+        use Data::CPAN::DSLIP::Explain;
+
+        my $dslip = 'Sdcfp';
+
+        my $obj = Data::CPAN::DSLIP::Explain->new;
+
+        my $meaning = $obj->dslip( $dslip );
+
+        print "\nDSLIP code `$dslip` means:\n",
+                join "\n\t",
+                    map {
+                        $obj->explain_dslip_letter( $_ )
+                        . "\n\t\t$meaning->{$_}"
+                    } qw(D S L I P);
+
+        print "\n\n----\n";
+
+DESCRIPTION
+    The module explains the DSLIP codes for those of us who have bad memory.
+    DSLIP stands for Development Stage, Support Level, Language Used,
+    Interface Style, Public License. DSLIP codes is what'd you'd see in CPAN
+    module list.
+
+METHODS
+  new
+        my $object = Data::CPAN::DSLIP::Explain->new;
+
+    Creates and returns a new Data::CPAN::DSLIP::Explain object. Takes no
+    arguments.
+
+  dslip
+        my $meaning = $object->dslip( 'Sdcfp' );
+        my @meanings = $object->dslip( qw( Sdcfp Sdcfp Sdcfp ) );
+
+        $VAR1 = {
+            'D' => 'Standard, supplied with Perl',
+            'S' => 'Developer',
+            'L' => 'C and perl, a C compiler will be needed'
+            'I' => 'plain Functions, no references used',
+            'P' => 'Standard-Perl: user may choose between GPL and Artistic',
+        };
+
+    Takes one or more arguments which should be DSLIP codes. In scalar
+    context returns the meaning of the first DSLIP in a form of a hashref.
+    In list context returns a list of explanations for one or several DSLIP
+    code passed as arguments. The meaning is a hashref with keys being each
+    of the letters of DSLIP:
+
+    D   Will contain *Development Stage* of the module.
+
+    S   Will contain *Support Level* of the module.
+
+    L   Will contain module's *Language Used*.
+
+    I   Will contain description of module's *Interface Style*.
+
+    P   Will contain module's *Public License* type.
+
+  explain_dslip_letter
+        my $D_means = $object->explain_dslip_letter('D');
+        my $S_means = $object->explain_dslip_letter('S');
+        my $L_means = $object->explain_dslip_letter('L');
+        my $I_means = $object->explain_dslip_letter('I');
+        my $P_means = $object->explain_dslip_letter('P');
+
+    Takes one argument which is a letter of DSLIP acronym and returns an
+    explaination of what that letter stands for. In other words
+    $object->explain_dslip_letter('S'); would return "Support Level".
+
+AUTHOR
+    Zoffix Znet, "<zoffix at cpan.org>"
+
+BUGS
+    Please report any bugs or feature requests to
+    "bug-data-cpan-dslip-explain at rt.cpan.org", or through the web
+    interface at
+    <http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Data-CPAN-DSLIP-Explain>
+    . I will be notified, and then you'll automatically be notified of
+    progress on your bug as I make changes.
+
+SUPPORT
+    You can find documentation for this module with the perldoc command.
+
+        perldoc Data::CPAN::DSLIP::Explain
+
+    You can also look for information at:
+
+    *   RT: CPAN's request tracker
+
+        <http://rt.cpan.org/NoAuth/Bugs.html?Dist=Data-CPAN-DSLIP-Explain>
+
+    *   AnnoCPAN: Annotated CPAN documentation
+
+        <http://annocpan.org/dist/Data-CPAN-DSLIP-Explain>
+
+    *   CPAN Ratings
+
+        <http://cpanratings.perl.org/d/Data-CPAN-DSLIP-Explain>
+
+    *   Search CPAN
+
+        <http://search.cpan.org/dist/Data-CPAN-DSLIP-Explain>
+
+COPYRIGHT & LICENSE
+    Copyright 2008 Zoffix Znet, all rights reserved.
+
+    This program is free software; you can redistribute it and/or modify it
+    under the same terms as Perl itself.
+

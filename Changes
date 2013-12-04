@@ -1,0 +1,18 @@
+Revision history for Data-CPAN-DSLIP-Explain
+
+0.04    2013-11-30
+        - Moved author tests to xt
+        - Added autogeneration of README from POD
+        - Minor fixes to comply with the specs and Kwalitee game
+
+0.03    2008-02-06
+        - =[ Changes unknown ]=
+
+0.02    2008-02-06
+        -fixed improper distro. Had some garbage in MANIFEST
+          if you managed to install this package you
+          are fine with 0.01
+
+0.01    2008-02-06
+        - First version, released on an unsuspecting world.
+

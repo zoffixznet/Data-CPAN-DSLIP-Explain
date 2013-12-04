@@ -1,0 +1,14 @@
+Build.PL
+Changes
+MANIFEST
+README
+LICENSE
+examples/explain_dslip.pl
+lib/Data/CPAN/DSLIP/Explain.pm
+xt/kwalitee.t
+xt/pod-coverage.t
+xt/pod.t
+t/Data-CPAN-DSLIP-Explain.t
+Makefile.PL
+META.yml
+META.json
